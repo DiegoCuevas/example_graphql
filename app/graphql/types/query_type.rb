@@ -4,14 +4,15 @@ module Types
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
 
-    field :all_authors, String, null: false, description: "All authors"
-    field :get_author, String, null: false, description: "Find author" do 
+
+    field :all_authors, [Types::AuthorType], null: false, description: "All authors"
+    field :get_author, [Types::AuthorType], null: false, description: "Find author" do 
       argument :id, Integer, required: true
     end
-    field :get_book_by_author, String, null: false do
+    field :get_book_by_author, [Types::BookType], null: false do
       argument :id, Integer, required: true
     end
-    field :get_book_by_name, String, null: false do
+    field :get_book_by_name, [Types::BookType], null: false do
       argument :name, String, required: true
     end
 
